@@ -93,7 +93,7 @@
 .ek-board-note{display:flex;justify-content:space-between;gap:24px;margin-top:12px;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(23,23,20,.55)}
 .ek-mats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:86px;border:1px solid rgba(23,23,20,.18);background:rgba(23,23,20,.18)}
 .ek-mat{background:#eceadf;padding:28px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.ek-mat .sw{position:absolute;inset:0;opacity:.14}
+.ek-mat .sw{position:absolute;inset:0;opacity:.2}
 .ek-mat>*{position:relative}
 .ek-mat h3{font:400 clamp(32px,4vw,54px)/.95 var(--serif);margin:auto 0 12px;letter-spacing:-.03em}
 .ek-mat p{margin:0;max-width:30ch;font-size:12.5px;line-height:1.55}
@@ -160,14 +160,23 @@
         <rect width="11" height="11" fill="#15161a"/>
         <path d="M0 2.5h11M0 8h11" stroke="#22242b" stroke-width="2.2"/>
         <path d="M1.5 0v11M7 0v11" stroke="#1a1c21" stroke-width="2.2"/>
-        <circle cx="3.2" cy="4.4" r=".75" fill="#9db0cb" opacity=".6"/>
-        <circle cx="8.6" cy="9" r=".62" fill="#dfe3ea" opacity=".42"/>
-        <circle cx="6" cy="1.6" r=".5" fill="#7d6f52" opacity=".5"/>
+        <circle cx="3.2" cy="4.4" r=".95" fill="#b6c6dd" opacity=".95"/>
+        <circle cx="8.6" cy="9" r=".8" fill="#eef1f6" opacity=".8"/>
+        <circle cx="6" cy="1.6" r=".62" fill="#a89268" opacity=".85"/>
+        <circle cx="1.2" cy="7.4" r=".5" fill="#8fa2bd" opacity=".7"/>
+        <circle cx="10" cy="4" r=".45" fill="#dfe3ea" opacity=".55"/>
       </pattern>
       <pattern id="mesh" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <path d="M0 0h9M0 4.5h9" stroke="rgba(216,208,193,.72)" stroke-width=".7"/>
         <path d="M0 0v9M4.5 0v9" stroke="rgba(216,208,193,.42)" stroke-width=".7"/>
       </pattern>
+      <pattern id="meshDark" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <path d="M0 0h9M0 4.5h9" stroke="rgba(23,23,20,.5)" stroke-width=".7"/>
+        <path d="M0 0v9M4.5 0v9" stroke="rgba(23,23,20,.3)" stroke-width=".7"/>
+      </pattern>
+      <linearGradient id="plateInk" x1="0" y1="0" x2=".7" y2="1">
+        <stop offset="0" stop-color="#31333a"/><stop offset=".55" stop-color="#1d1e22"/><stop offset="1" stop-color="#101113"/>
+      </linearGradient>
       <linearGradient id="satin" x1="0" y1="0" x2=".9" y2="1">
         <stop offset="0" stop-color="#f7f0e2"/><stop offset=".3" stop-color="#cec3ac"/>
         <stop offset=".52" stop-color="#f1e9d8"/><stop offset=".78" stop-color="#b0a48d"/>
@@ -386,26 +395,31 @@
           <text x="62" y="43">H0</text><text x="62" y="218">H/2</text><text x="62" y="393">H1</text>
         </g>
         <g transform="translate(110,55) scale(.74)">
-          <use href="#p-full" fill="#1b1c20"/><use href="#p-full" fill="none" stroke="rgba(23,23,20,.5)"/>
-          <use href="#p-fray" stroke="#1b1c20"/>
+          <use href="#p-full" fill="url(#plateInk)"/><use href="#p-full" fill="none" stroke="rgba(23,23,20,.5)"/>
+          <use href="#p-fray" stroke="#2b2d33"/>
+          <use href="#p-seam" stroke="rgba(236,234,223,.35)"/>
         </g>
         <g transform="translate(400,55) scale(.74)">
-          <use href="#p-crown" fill="#26282e" transform="translate(0,-26)"/>
-          <use href="#p-crown" fill="none" stroke="rgba(23,23,20,.5)" transform="translate(0,-26)"/>
-          <use href="#p-body" fill="#1b1c20" transform="translate(0,16)"/>
-          <use href="#p-body" fill="none" stroke="rgba(23,23,20,.5)" transform="translate(0,16)"/>
+          <use href="#p-crown" fill="url(#plateInk)" transform="translate(0,-30)"/>
+          <use href="#p-crown" fill="none" stroke="rgba(23,23,20,.5)" transform="translate(0,-30)"/>
+          <use href="#p-body" fill="url(#plateInk)" transform="translate(0,22)"/>
+          <use href="#p-body" fill="none" stroke="rgba(23,23,20,.5)" transform="translate(0,22)"/>
+          <path d="M210 175v34" stroke="rgba(23,23,20,.45)" stroke-width="1.2" stroke-dasharray="4 4"/>
         </g>
         <g transform="translate(690,55) scale(.74)">
-          <use href="#p-lin" fill="url(#mesh)" transform="translate(0,-22)"/>
-          <use href="#p-lin" fill="none" stroke="rgba(23,23,20,.5)" transform="translate(0,-22)"/>
-          <use href="#p-lin" fill="url(#satin)" transform="translate(0,22)"/>
-          <use href="#p-lin" fill="none" stroke="rgba(23,23,20,.5)" transform="translate(0,22)"/>
+          <use href="#p-lin" fill="url(#meshDark)" transform="translate(0,-30)"/>
+          <use href="#p-lin" fill="none" stroke="rgba(23,23,20,.6)" transform="translate(0,-30)"/>
+          <use href="#p-lin" fill="url(#satin)" transform="translate(0,34)"/>
+          <use href="#p-lin" fill="none" stroke="rgba(23,23,20,.5)" transform="translate(0,34)"/>
+          <path d="M210 262v26" stroke="rgba(23,23,20,.45)" stroke-width="1.2" stroke-dasharray="4 4"/>
         </g>
         <g transform="translate(980,55) scale(.74)">
-          <use href="#p-band" fill="#1b1c20"/><use href="#p-band" fill="none" stroke="rgba(23,23,20,.5)"/>
-          <rect x="158" y="150" width="104" height="46" rx="1" fill="#131311"/>
-          <text x="210" y="171" text-anchor="middle" fill="#eceadf" font-family="Georgia,serif" font-size="15">SYBEH</text>
-          <text x="210" y="185" text-anchor="middle" fill="rgba(236,234,223,.6)" font-family="Arial,Helvetica,sans-serif" font-size="6.5" letter-spacing="2.4">PARIS · 001</text>
+          <use href="#p-band" fill="url(#plateInk)" transform="translate(0,26)"/>
+          <use href="#p-band" fill="none" stroke="rgba(23,23,20,.5)" transform="translate(0,26)"/>
+          <rect x="150" y="118" width="120" height="54" rx="1" fill="#16171a" stroke="rgba(23,23,20,.5)"/>
+          <text x="210" y="142" text-anchor="middle" fill="#eceadf" font-family="Georgia,serif" font-size="17">SYBEH</text>
+          <text x="210" y="157" text-anchor="middle" fill="rgba(236,234,223,.62)" font-family="Arial,Helvetica,sans-serif" font-size="7" letter-spacing="2.6">PARIS · 001</text>
+          <path d="M210 176v36" stroke="rgba(23,23,20,.45)" stroke-width="1.2" stroke-dasharray="4 4"/>
         </g>
         <g font-family="Arial,Helvetica,sans-serif" font-size="9" letter-spacing="1.6" fill="rgba(23,23,20,.72)">
           <text x="110" y="412">01 · OBJET COMPLET</text>
@@ -426,7 +440,7 @@
         <small>Extérieur · coiffe et corps</small>
       </article>
       <article class="ek-mat reveal">
-        <svg class="sw" viewBox="0 0 100 100" preserveAspectRatio="none"><rect width="100" height="100" fill="url(#mesh)"/></svg>
+        <svg class="sw" viewBox="0 0 100 100" preserveAspectRatio="none"><rect width="100" height="100" fill="url(#meshDark)"/></svg>
         <span class="eyebrow">M / 02</span>
         <div><h3>Structure.</h3><p>La trame intérieure qui tient le volume. On ne la voit jamais, on la sent à chaque fois.</p></div>
         <small>Construction · à documenter atelier</small>
@@ -514,10 +528,10 @@
     place(L.body,   { o: ss(p, .06, .14) * inv, y:  -42 * S, z:  70 * S, rx: -3 * S });
     place(L.seam,   { o: ss(p, .24, .32) * inv, y:   -6 * S, z:  96 * S });
     place(L.fiber,  { o: ss(p, .20, .29) * (1 - ss(p, .37, .46)) * inv, y: 20 * S, z: 150 * S, s: 1 + .22 * S });
-    place(L.struct, { o: ss(p, .38, .46) * inv, y:   64 * S, z:    4 * S, rx: 2 * S });
-    place(L.lining, { o: ss(p, .52, .60) * inv, y:  138 * S, z:  -46 * S, rx: 4 * S });
-    place(L.band,   { o: ss(p, .66, .74) * inv, y:  212 * S, z:  -84 * S, rx: 6 * S });
-    place(L.label,  { o: ss(p, .68, .76) * inv, x:  148 * S, y: 248 * S, z: -104 * S, rx: 7 * S, s: .92 });
+    place(L.struct, { o: ss(p, .38, .46) * inv, y:   56 * S, z:    4 * S, rx: 2 * S });
+    place(L.lining, { o: ss(p, .52, .60) * inv, y:  152 * S, z:  -46 * S, rx: 4 * S });
+    place(L.band,   { o: ss(p, .66, .74) * inv, y:  238 * S, z:  -84 * S, rx: 6 * S });
+    place(L.label,  { o: ss(p, .68, .76) * inv, x:  212 * S, y: 196 * S, z: -104 * S, rx: 7 * S, s: .86 });
 
     mx += (tmx - mx) * .08;
     my += (tmy - my) * .08;
