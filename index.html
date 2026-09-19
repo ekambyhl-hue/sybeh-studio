@@ -135,6 +135,23 @@
 .ek-mats{grid-template-columns:1fr;margin-top:60px}
 .ek-mat{min-height:280px}
 }
+@media(max-height:560px) and (min-width:600px){
+.ek-track{height:620svh}
+.ek-orbit{left:31%;top:50%;width:min(46svh,300px)}
+.ek-callouts{left:auto;right:var(--pad);top:50%;bottom:auto;transform:translateY(-50%);width:min(40vw,320px)}
+.ek-call{position:absolute;top:50%;bottom:auto;transform:translateY(-50%)}
+.ek-call h4{font-size:clamp(20px,3.4vw,28px);margin:8px 0 9px}
+.ek-call p{font-size:11px;line-height:1.45}
+.ek-call .ek-lead{margin-bottom:14px}
+.ek-call dl{display:none}
+.ek-rail{gap:0}
+.ek-rail button{padding:4px 0}
+.ek-rail span{display:none}
+.ek-hud{padding:64px var(--pad) 18px}
+.ek-count{top:64px}
+.ek-title,.ek-hint,.ek-prog{display:none}
+.ek-intro{min-height:auto;padding:70px var(--pad)}
+}
 @media(prefers-reduced-motion:reduce){
 .ek-track{height:auto}
 .ek-stage{position:relative;height:auto;min-height:0;padding:80px 0}
@@ -514,7 +531,7 @@
 
   let SPREAD = 1;
   function calcSpread() {
-    const stacked = innerWidth <= 900;
+    const stacked = innerWidth <= 900 && innerHeight > 560;
     const oh = orbit.getBoundingClientRect().height || 400;
     const usable = innerHeight - (stacked ? 300 : 0);
     SPREAD = Math.max(.35, Math.min(1, (usable * .86 - oh * .83) / 420));
