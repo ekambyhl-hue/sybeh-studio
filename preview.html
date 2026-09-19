@@ -121,7 +121,7 @@
 .ek-call p{font-size:11.5px;max-width:none}
 .ek-call dl{display:none}
 .ek-title,.ek-hint,.ek-prog{display:none}
-.ek-count{left:18px}
+.ek-count{left:18px}.ek-axis b{display:none}
 .ek-rail{left:18px;gap:0}
 .ek-rail button{padding:6px 0}
 .ek-rail span{display:none}
@@ -511,10 +511,12 @@
   }, { passive: true });
   stage.addEventListener('pointerleave', () => { tmx = tmy = 0; }, { passive: true });
 
+  const SP = () => innerWidth < 760 ? .58 : 1;
   function place(el, { o = 1, x = 0, y = 0, z = 0, rx = 0, s = 1 }) {
+    const K = SP();
     el.style.opacity = o.toFixed(3);
     el.style.transform =
-      `translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,${z.toFixed(2)}px) rotateX(${rx.toFixed(2)}deg) scale(${s.toFixed(4)})`;
+      `translate3d(${(x*K).toFixed(2)}px,${(y*K).toFixed(2)}px,${(z*K).toFixed(2)}px) rotateX(${rx.toFixed(2)}deg) scale(${s.toFixed(4)})`;
   }
 
   function render(p) {
