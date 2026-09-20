@@ -161,6 +161,29 @@
 .ek-callouts,.ek-rail,.ek-hud,.ek-axis{display:none}
 .ek-call .num,.ek-call h4,.ek-call p,.ek-call dl{opacity:1;transform:none;transition:none}
 }
+.ekm{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:24px}
+.ekm.on{display:grid}
+.ekm-bg{position:absolute;inset:0;background:rgba(10,10,9,.74);backdrop-filter:blur(6px);animation:ekmF .4s ease}
+.ekm-box{position:relative;width:min(100%,430px);background:#181815;color:#f5f1e8;padding:clamp(28px,5vw,44px);border:1px solid rgba(244,241,233,.14);animation:ekmU .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes ekmF{from{opacity:0}}
+@keyframes ekmU{from{opacity:0;transform:translateY(16px)}}
+.ekm-x{position:absolute;top:12px;right:14px;background:0;border:0;color:rgba(244,241,233,.45);font:400 20px/1 var(--sans);cursor:pointer;padding:6px;transition:color .3s}
+.ekm-x:hover{color:#f5f1e8}
+.ekm-box .eyebrow{color:rgba(244,241,233,.45)}
+.ekm-box h3{font:400 clamp(28px,5vw,40px)/.98 var(--serif);letter-spacing:-.04em;margin:12px 0 14px}
+.ekm-box p{margin:0 0 26px;color:rgba(244,241,233,.6);font-size:12.5px;line-height:1.55}
+.ekm-f{display:flex;border-bottom:1px solid rgba(255,255,255,.55)}
+.ekm-f input{width:100%;background:0;border:0;color:#f5f1e8;padding:12px 0;outline:0;font:inherit}
+.ekm-f input::placeholder{color:rgba(244,241,233,.32)}
+.ekm-consent{display:flex;gap:10px;align-items:flex-start;margin-top:22px;font-size:10.5px;line-height:1.5;color:rgba(244,241,233,.55);cursor:pointer}
+.ekm-consent input{margin-top:2px;accent-color:#c8b68a;flex:0 0 auto}
+.ekm-send{margin-top:26px;width:100%;background:#f5f1e8;color:#181815;border:0;padding:14px;text-transform:uppercase;font:400 10px/1 var(--sans);letter-spacing:.16em;cursor:pointer;transition:opacity .3s}
+.ekm-send:disabled{opacity:.45;cursor:default}
+.ekm-note{margin:16px 0 0;font-size:9px;letter-spacing:.06em;color:rgba(244,241,233,.32)}
+.ekm-done{display:none}
+.ekm.done .ekm-form{display:none}
+.ekm.done .ekm-done{display:block}
+.ekm-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 </style></head><body>
 <header class="top"><nav class="nav"><a href="#edition">Édition 001</a><a href="#lab">Laboratoire</a></nav><a class="brand" href="#">SYBEH</a><nav class="nav right"><a href="#shop">Objet</a><a href="#contact">Entrer</a></nav><span class="menu">Menu</span></header>
 <main>
@@ -483,8 +506,33 @@
 <section class="section lab" id="lab"><div class="grid12"><span class="eyebrow">04 / SYBEH Studio</span><h2 class="display big reveal">Un laboratoire créatif.</h2><div class="mission reveal"><p>SYBEH Studio imagine et édite des objets identitaires.</p><p>Des objets pensés pour accompagner une personne, un espace ou une manière de vivre.</p><p><strong>EKOTO en est la première expression.</strong></p></div><p class="vision reveal">Aujourd'hui, la silhouette.<br>Demain, l'objet et l'espace.</p></div></section>
 <section class="section shop" id="shop"><div class="head"><div><span class="eyebrow">05 / L'objet</span><h2 class="display reveal">EKOTO — 001</h2></div><a class="underline" href="#contact">Édition ouverte</a></div><div class="product-grid"><div class="product"><div class="pic reveal"><img src="assets/img-04-8af6cfd21f.jpg" alt="EKOTO"></div><div class="product-name"><span>Noir</span><span>95 €</span></div></div><div class="product"><div class="pic reveal"><img src="assets/img-05-1c1e5a16ce.jpg" alt="EKOTO"></div><div class="product-name"><span>Bleu nuit</span><span>95 €</span></div></div><div class="product"><div class="pic reveal"><img src="assets/img-06-bef582d49f.jpg" alt="EKOTO"></div><div class="product-name"><span>Prisme</span><span>95 €</span></div></div><div class="product"><div class="pic reveal"><img src="assets/img-07-58582d0bc7.jpg" alt="EKOTO"></div><div class="product-name"><span>Écru</span><span>95 €</span></div></div></div><div class="buyline"><span>Choisir une taille — S/M · L/XL · XXL</span><a class="underline" href="#contact">Découvrir l'édition</a></div></section>
 <section class="section next"><span class="eyebrow">06 / La suite</span><h2 class="display reveal">SYBEH / 002<br><em>En recherche.</em></h2><p class="reveal">La prochaine édition n'est pas encore définie. Le laboratoire continue d'explorer les objets, les matières et les usages qui participent à notre identité.</p></section>
-<section class="signup" id="contact"><div class="signup-grid"><h2 class="display reveal">Entrer dans le laboratoire.</h2><div class="signup-box reveal"><p>Recevoir les prochaines recherches, éditions et collaborations de SYBEH Studio.</p><form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Merci';"><input type="email" placeholder="Votre adresse email" aria-label="Votre adresse email" required><button type="submit">Rejoindre</button></form></div></div><footer class="foot"><span>© 2026 SYBEH Studio</span><span>Laboratoire créatif · Paris</span><span>Instagram · Contact · Livraison · Retours · Mentions</span></footer></section>
+<section class="signup" id="contact"><div class="signup-grid"><h2 class="display reveal">Entrer dans le laboratoire.</h2><div class="signup-box reveal"><p>Recevoir les prochaines recherches, éditions et collaborations de SYBEH Studio.</p><form class="form" id="ekJoin"><input type="email" placeholder="Votre adresse email" aria-label="Votre adresse email" required><button type="submit">Rejoindre</button></form></div></div><footer class="foot"><span>© 2026 SYBEH Studio</span><span>Laboratoire créatif · Paris</span><span>Instagram · Contact · Livraison · Retours · Mentions</span></footer></section>
 </main>
+<div class="ekm" id="ekModal" role="dialog" aria-modal="true" aria-labelledby="ekmT">
+  <div class="ekm-bg" data-ekm-close></div>
+  <div class="ekm-box">
+    <button class="ekm-x" type="button" data-ekm-close aria-label="Fermer">×</button>
+    <div class="ekm-form">
+      <span class="eyebrow">SYBEH Studio</span>
+      <h3 id="ekmT">Entrer dans le laboratoire.</h3>
+      <p>Les prochaines recherches, éditions et collaborations. Rien d’autre.</p>
+      <form id="ekmForm" action="https://62f62bcc.sibforms.com/serve/MUIFAHFc8d5GITCuakpBZY0OXH-zFZ6aHbn0am39V49UoQERVd-APUCCiZ6rUj1jo_XCGVvnbvA6FAx9iac0P-gCCE0x1Vk_xAt_62645ZqtmsMHCldlZDP-wUx9En7K9XFf-YVsRLPzhpV7hoR4rdSK8kQkU5CGUhcH5r68i0YpaJwHLYaabOgHfu_Y6LyxXYJdjom0rc4ayqnf" method="POST" target="ekmSink">
+        <div class="ekm-f"><input type="email" name="EMAIL" id="ekmEmail" placeholder="Votre adresse email" required autocomplete="email"></div>
+        <input class="ekm-hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="locale" value="fr">
+        <label class="ekm-consent"><input type="checkbox" name="OPTIN" value="1" required> J’accepte de recevoir les emails de SYBEH Studio. Désinscription en un clic, à tout moment.</label>
+        <button class="ekm-send" type="submit">Rejoindre</button>
+      </form>
+      <p class="ekm-note">Aucune revente, aucun partage.</p>
+    </div>
+    <div class="ekm-done">
+      <span class="eyebrow">Bienvenue</span>
+      <h3>C’est noté.</h3>
+      <p>Un email de confirmation arrive. Pense à regarder tes indésirables.</p>
+    </div>
+  </div>
+</div>
+<iframe name="ekmSink" title="cible technique" style="display:none" aria-hidden="true"></iframe>
 <script>
 (() => {
   'use strict';
@@ -617,6 +665,29 @@
   }));
 
   render(progress());
+})();
+</script>
+<script>
+(() => {
+  const modal = document.getElementById('ekModal');
+  const form  = document.getElementById('ekmForm');
+  const mail  = document.getElementById('ekmEmail');
+  const join  = document.getElementById('ekJoin');
+  if (!modal || !form) return;
+  const open = v => { if (v) mail.value = v; modal.classList.add('on'); document.body.style.overflow = 'hidden'; setTimeout(() => mail.focus(), 60); };
+  const close = () => { modal.classList.remove('on'); document.body.style.overflow = ''; };
+  if (join) join.addEventListener('submit', e => { e.preventDefault(); open(join.querySelector('input').value.trim()); });
+  modal.addEventListener('click', e => { if (e.target.hasAttribute('data-ekm-close')) close(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('on')) close(); });
+  form.addEventListener('submit', () => {
+    const b = form.querySelector('.ekm-send');
+    b.disabled = true; b.textContent = 'Envoi\u2026';
+    const sink = document.getElementsByName('ekmSink')[0];
+    let settled = false;
+    const finish = () => { if (settled) return; settled = true; modal.classList.add('done'); };
+    sink.addEventListener('load', finish, { once: true });
+    setTimeout(finish, 2600);
+  });
 })();
 </script>
 
